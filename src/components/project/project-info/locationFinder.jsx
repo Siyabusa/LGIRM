@@ -16,7 +16,7 @@ import "./locationFinder.css";
 
 export default function Places() {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyBSirHhSIahaiBYnw31cJCNeNsabr7iR1Q",
+    googleMapsApiKey: "",
     libraries: ["places"],
   });
 
