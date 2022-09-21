@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "http://10.32.60.74:7001/gdoh/static/css/main.66333868.chunk.css",
+    "main.js": "http://10.32.60.74:7001/gdoh/static/js/main.6dfd13a9.chunk.js",
+    "main.js.map": "http://10.32.60.74:7001/gdoh/static/js/main.6dfd13a9.chunk.js.map",
+    "runtime~main.js": "http://10.32.60.74:7001/gdoh/static/js/runtime~main.04ea18a3.js",
+    "runtime~main.js.map": "http://10.32.60.74:7001/gdoh/static/js/runtime~main.04ea18a3.js.map",
+    "static/css/2.6ef3ef4d.chunk.css": "http://10.32.60.74:7001/gdoh/static/css/2.6ef3ef4d.chunk.css",
+    "static/js/2.3a8ad9de.chunk.js": "http://10.32.60.74:7001/gdoh/static/js/2.3a8ad9de.chunk.js",
+    "static/js/2.3a8ad9de.chunk.js.map": "http://10.32.60.74:7001/gdoh/static/js/2.3a8ad9de.chunk.js.map",
+    "index.html": "http://10.32.60.74:7001/gdoh/index.html",
+    "precache-manifest.33eb92defd23146e165ce54182ec6e53.js": "http://10.32.60.74:7001/gdoh/precache-manifest.33eb92defd23146e165ce54182ec6e53.js",
+    "service-worker.js": "http://10.32.60.74:7001/gdoh/service-worker.js",
+    "static/css/2.6ef3ef4d.chunk.css.map": "http://10.32.60.74:7001/gdoh/static/css/2.6ef3ef4d.chunk.css.map",
+    "static/css/main.66333868.chunk.css.map": "http://10.32.60.74:7001/gdoh/static/css/main.66333868.chunk.css.map",
+    "static/media/GPG-Logo.png": "http://10.32.60.74:7001/gdoh/static/media/GPG-Logo.278d9f24.png",
+    "static/media/find.png": "http://10.32.60.74:7001/gdoh/static/media/find.8b689b8f.png",
+    "static/media/invoice.png": "http://10.32.60.74:7001/gdoh/static/media/invoice.2a4224be.png"
+  }
+}
