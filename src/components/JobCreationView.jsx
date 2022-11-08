@@ -17,7 +17,7 @@ class JobCreationView extends Component{
   async fetchJobCreation (pnumber){
     try {
       const options = { method: 'GET' };
-      const first = await fetch("http://localhost:9000/jobcreationbypnumber?pnumber=" + pnumber, options);
+      const first = await fetch("http://83.229.71.39:9000/jobcreationbypnumber?pnumber=" + pnumber, options);
       const response = await first.json();
       console.log(response);
       this.setState({data:response, isLoading: false});

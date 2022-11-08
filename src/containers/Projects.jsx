@@ -21,7 +21,7 @@ export default class Projects extends Component {
     async getProjectsByMunicipality(municipality) {
 
         try {
-            const first = await fetch('http://localhost:9000/projectbymunicipality?municipality=' + municipality);
+            const first = await fetch('http://83.229.71.39:9000/projectbymunicipality?municipality=' + municipality);
             const response = await first.json();
             this.setState({ data: response.recordset, isLoading: false });
         } catch (err) {
@@ -35,7 +35,7 @@ export default class Projects extends Component {
 
         if (sessionStorage.getItem("role") === "System Administrator") {
             try {
-                const first = await fetch('http://localhost:9000/projects');
+                const first = await fetch('http://83.229.71.39:9000/projects');
                 const response = await first.json();
                 this.setState({ data: response.recordset, isLoading: false });
             } catch (err) {

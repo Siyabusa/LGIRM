@@ -20,7 +20,7 @@ export default class Users extends Component{
         this.setState({isLoading: true});
             if(sessionStorage.getItem("role") === "System Administrator"){
                 try{
-                    const first = await fetch('http://localhost:9000/users');
+                    const first = await fetch('http://83.229.71.39:9000/users');
                     const response = await first.json();
                     console.log(response.recordset[0]);
                     this.setState({data: response.recordset, isLoading : false});

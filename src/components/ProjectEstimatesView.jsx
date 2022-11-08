@@ -17,7 +17,7 @@ class ProjectEstimatesView extends Component {
     this.setState({ isLoading: true });
     try {
       const options = { method: 'GET' };
-      const varURL = "http://localhost:9000/projectestimates?pnumber="+ pnumber +"&estimatetype=" + estimatetype;
+      const varURL = "http://83.229.71.39:9000/projectestimates?pnumber="+ pnumber +"&estimatetype=" + estimatetype;
       const first = await fetch(varURL, options);
       const response = await first.json();
       if (estimatetype === 'Project Expenditure') {

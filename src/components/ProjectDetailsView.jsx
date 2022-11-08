@@ -21,7 +21,7 @@ class ProjectDetailsView extends Component {
     async fetchLocation(pnumber) {
         try {
             const options = { method: 'GET' };
-            const first = await fetch("http://localhost:9000/locationbypnumber?pnumber=" + pnumber, options);
+            const first = await fetch("http://83.229.71.39:9000/locationbypnumber?pnumber=" + pnumber, options);
             const response = await first.json();
             this.setState({ locationData: response[0] });
 
@@ -34,7 +34,7 @@ class ProjectDetailsView extends Component {
     async fetchContractor(pnumber) {
         try {
             const options = { method: 'GET' };
-            const first = await fetch("http://localhost:9000/contractorbypnumber?pnumber=" + pnumber, options);
+            const first = await fetch("http://83.229.71.39:9000/contractorbypnumber?pnumber=" + pnumber, options);
             const response = await first.json();
             this.setState({ contractorData: response[0] });
         } catch (err) {
