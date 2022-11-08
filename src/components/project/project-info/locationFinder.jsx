@@ -22,11 +22,8 @@ export default function Places() {
   
 
   const { isLoaded } = useLoadScript({
-<<<<<<< HEAD
-    googleMapsApiKey: "",
-=======
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
->>>>>>> 50e3858 (update code)
+
     libraries: ["places"],
   });
 
