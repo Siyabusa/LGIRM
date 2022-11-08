@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-function Dashboard() {
+const Dashboard = () => {
   return (
     <div>to be added later</div>
   );

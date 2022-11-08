@@ -13,6 +13,7 @@ import NewProject from "./containers/Newproject";
 import MainSearchResults from "./containers/PatientSearchResults";
 import MainTab from "./components/TabView";
 import AppliedRoute from "./components/AppliedRoute";
+import ProjectView from "./components/ProjectView";
 
 export default ({ childProps }) =>
   <Switch>
@@ -23,6 +24,7 @@ export default ({ childProps }) =>
     <AppliedRoute path="/newuser" exact component={NewUser} props={childProps} />
     <AppliedRoute path="/newproject" exact component={NewProject} props={childProps} />
     <AppliedRoute path="/users" exact component={Users} props={childProps} />
+    <AppliedRoute path="/projectview" exact component={ProjectView} props={childProps} />
     { /* Finally, catch all unmatched routes */ }
     <Route component={NotFound} />
   </Switch>;

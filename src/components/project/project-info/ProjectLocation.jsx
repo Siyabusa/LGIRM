@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useContext } from "react";
+import React, { useState, useMemo, useContext, useEffect } from "react";
 import TextField from '@mui/material/TextField';
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
@@ -14,54 +14,55 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import "./locationFinder.css";
-import { multistepcontext } from '../../../StepContext';
 
 
-export default function Places() {
+export default function Places(props) {
 
-  
 
   const { isLoaded } = useLoadScript({
-<<<<<<< HEAD
-    googleMapsApiKey: "",
-=======
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
->>>>>>> 50e3858 (update code)
     libraries: ["places"],
   });
 
   if (!isLoaded) return <div>Loading...</div>;
-  return <Map />;
+  return <Map latlng = {props}/>;
 }
 
-function Map() {
-  const { locationData, setLocationData } = useContext(multistepcontext);
+function Map(props) {
+  const lat = props.latlng.details.Latitude;
+  const lng = props.latlng.details.Longitude;
+  console.log(lat + lng);
   const center = useMemo(() => ({ lat: -26.2041028, lng: 28.0473051 }), []);
   const [selected, setSelected] = useState(null);
+  const [location, setLocation] = useState("");
+  const [isEdit, setEdit] = useState(false);
 
-  
+  useEffect(() => {
+    
+    setSelected({lat, lng });
+    
+  },[]);
 
   
   return (
     <>
-      <div className="places-container">
+      {isEdit ? <div className="places-container">
       
         <PlacesAutocomplete setSelected={setSelected} />
-      </div>
+      </div> : <div></div>}
 
       <GoogleMap
         zoom={10}
         center={center}
         mapContainerClassName="map-container"
       >
-        {selected && <Marker position={selected} />}
+        {selected && <Marker position={{lat, lng }} />}
       </GoogleMap>
     </>
   );
 }
 
 const PlacesAutocomplete = ({ setSelected }) => {
-  const {locationData, setLocationData } = useContext(multistepcontext);
   const {
     ready,
     value,
@@ -77,7 +78,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
     const results = await getGeocode({ address });
     const { lat, lng } = await getLatLng(results[0]);
     setSelected({ lat, lng });
-    setLocationData({...locationData, "latlng" : lat + " " + lng});
+    
   };
 
   return (

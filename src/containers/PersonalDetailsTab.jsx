@@ -12,62 +12,36 @@ export default class PersonalDetailsTab extends Component {
     }
 
     getValues = () => {
+        console.log("this is the value tested", this.props.details.details.selected.Number);
         return(
                 <div className="persondetails">
                             <dl className="dl-horizontal">
-                                <dt>Title</dt>
-                                <dd>{this.props.details.Title}</dd>
+                                <dt>Project Number</dt>
+                                <dd>{this.props.details.details.selected.Number}</dd>
 
-                                <dt>FirstName</dt>
-                                <dd>{this.props.details.FirstName}</dd>
+                                <dt>Project Name</dt>
+                                <dd>{this.props.details.details.selected.Name}</dd>
 
-                                <dt>LastName</dt>
-                                <dd>{this.props.details.LastName}</dd>
+                                <dt>Project Type</dt>
+                                <dd>{this.props.details.details.selected.ProjectType}</dd>
 
-                                <dt>MiddleName</dt>
-                                <dd>{this.props.details.MiddleName}</dd>
-                                
+                                <dt>Province</dt>
+                                <dd>{this.props.details.details.selected.Province}</dd>
 
-                                <dt>RSA ID Number</dt>
-                                <dd>{this.props.details.ID}</dd>
+                                <dt>Delivery Mechanism</dt>
+                                <dd>{this.props.details.details.selected.DeliveryMechanism}</dd>
 
-                                <dt>BirthDate</dt>
-                                <dd>{this.props.details.BirthDate}</dd>
-
-                                <dt>BloodType</dt>
-                                <dd>{this.props.details.BloodType}</dd>
-
-                                <dt>Age</dt>
-                                <dd>{this.props.details.Age}</dd>
-
-                                <dt>DeathDate</dt>
-                                <dd>{this.props.details.DeathDate}</dd>
-
-                                <dt>Race</dt>
-                                <dd>{this.props.details.Race}</dd>
-
-                                <dt>Gender</dt>
-                                <dd>{this.props.details.Gender}</dd>
-
-                                <dt>Religion</dt>
-                                <dd>{this.props.details.Religion}</dd>
-
-                                <dt>Language</dt>
-                                <dd>{this.props.details.Language}</dd>
-
-                                <dt>MaritalStatus</dt>
-                                <dd>{this.props.details.MaritalStatus}</dd>
-
-                                <dt>Nationality</dt>
-                                <dd>{this.props.details.Nationality}</dd>
-                                
+                                <dt>Project Manager</dt>
+                                <dd>{this.props.details.details.selected.ProjectLeader}</dd>
+        
                             </dl>
                         </div>
                         );
     }
 
     render(){
-        const display = this.props.details === "" ? this.defaultValue() : this.getValues();
+
+        const display = this.props.details.length === 0 ? this.defaultValue() : this.getValues();
         return(
             <div>{display }</div>
         );

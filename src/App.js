@@ -26,13 +26,15 @@ class App extends Component {
   }
 
   async componentDidMount() {
+
     try {
       if(sessionStorage.getItem("loggedIn") === 'true'){
         this.userHasAuthenticated(true);
         this.userIsAdmin(sessionStorage.getItem("role"));
-
-        //console.log("checking the value stored for user : " + sessionStorage.getItem("user"));
+        sessionStorage.getItem("role") === 'System Administrator' ? this.userIsAdmin(true) : this.userIsAdmin(false);
         this.userNameDisplay(sessionStorage.getItem("user"));
+        this.setState({role: sessionStorage.getItem("role"), user: sessionStorage.getItem("user")});
+        
       }else{
         this.userHasAuthenticated(false);
       }
@@ -79,8 +81,9 @@ class App extends Component {
   handleLogout = event => {
     this.userHasAuthenticated(false);
     this.userIsAdmin("");
-    this.props.history.push("/login");
+    this.setState({user: ""});
     sessionStorage.clear();
+    this.props.history.push("/login");
   }
   
 
@@ -97,7 +100,7 @@ class App extends Component {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/"><img src={logo} alt="" style={{width:100, marginTop: -7}} />Department of Treasury</Link>
+              <Link to="/"><img src={logo} alt="" style={{width:100, marginTop: -7}} />LG IRM</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -125,9 +128,6 @@ class App extends Component {
                     </Navbar.Text>
                   </Fragment>
                 : <Fragment>
-                    <LinkContainer to="/signup">
-                      <NavItem>Signup</NavItem>
-                    </LinkContainer>
                     <LinkContainer to="/login">
                       <NavItem>Login</NavItem>
                     </LinkContainer>

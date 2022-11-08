@@ -5,7 +5,7 @@ import './PatientSearchResultsTable.css'
 import PharmacyPatientTab from '../components/PharmacyPatientTabView'
 //import paginationFactory from 'react-bootstrap-table2-paginator';
 import BootstrapTable from 'react-bootstrap-table-next';
-import PatientTabView from '../components/PatientTabView';
+import PatientTabView from './ProjectViewTabView';
 import Switch from "react-switch";
 import { ToastContainer, toast } from 'react-toastify';
 

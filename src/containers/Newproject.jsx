@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import BasicTabs from '../components/project/newproject-tab-layout';
 
+
 export default class NewProject extends Component {
 
 constructor(props){
@@ -14,7 +15,7 @@ constructor(props){
     return (
       <>
         <div className="container">
-            <BasicTabs/>
+            <BasicTabs details = {this.props.location.state}/>
         </div>
       </>
     )

@@ -46,22 +46,24 @@ export default class Login extends Component {
         if(response.data){
           sessionStorage.setItem("loggedIn", true);
           sessionStorage.setItem("user", response.data[0].Name + " " + response.data[0].Surname);
+          sessionStorage.setItem("municipality", response.data[0].Municipality);
+          sessionStorage.setItem("province", response.data[0].Province);
           this.props.userHasAuthenticated(true);
           sessionStorage.setItem("role", response.data[0].userRole);
           if(response.data[0].userRole === 'System Administrator'){
-              this.setState({isAdmin: true, isLoading: false})
+              this.setState({isAdmin: true,data: response.data[0], isLoading: false})
           }
           this.props.history.push({
             pathname: '/',
             state: { 
               isAdmin : this.state.isAdmin,
-              data : this.state.data,
-            user : ""}
+              Role : response.data[0].userRole,
+              user : response.data[0].UserName,
+              Municpality : response.data[0].Municpality
+            }
           });
         }
     }catch(err){
-      //router.push('/overview');
-      console.log({error: err.response.data});
       const msg  = err.response.data;
       if(msg === ("user does not exist")){
           alert(msg);
