@@ -31,7 +31,7 @@ export default class Login extends Component {
   fetchUser = async event => {
     const {username, password} = this.state;
       try{
-        const response = await axios.post("http://localhost:9000/login",JSON.stringify({
+        const response = await axios.post("http://83.229.71.39:9000/login",JSON.stringify({
           UserName : username,  
           Password : password
         }), {
