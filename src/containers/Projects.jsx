@@ -3,7 +3,9 @@ import logo from '../images/find.png'
 import { Image } from 'react-bootstrap'
 import './Projects.css';
 import Loader from 'react-loader-spinner';
-import ProjectResultsComponent from '../components/ProjectResultsComponent'
+import ProjectResultsComponent from '../components/ProjectResultsComponent';
+
+const URL = process.env.REACT_APP_URL;
 
 export default class Projects extends Component {
 
@@ -21,7 +23,7 @@ export default class Projects extends Component {
     async getProjectsByMunicipality(municipality) {
 
         try {
-            const first = await fetch('http://83.229.71.39:9000/projectbymunicipality?municipality=' + municipality);
+            const first = await fetch("http://" + URL + ":9000/projectbymunicipality?municipality="+ municipality);
             const response = await first.json();
             this.setState({ data: response.recordset, isLoading: false });
         } catch (err) {
@@ -35,7 +37,7 @@ export default class Projects extends Component {
 
         if (sessionStorage.getItem("role") === "System Administrator") {
             try {
-                const first = await fetch('http://83.229.71.39:9000/projects');
+                const first = await fetch("http://" + URL + ":9000/projects");
                 const response = await first.json();
                 this.setState({ data: response.recordset, isLoading: false });
             } catch (err) {

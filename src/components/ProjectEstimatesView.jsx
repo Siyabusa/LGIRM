@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ProjectEstimateDetails from './ProjectEstimatesDetails';
 
+const URL = process.env.REACT_APP_URL;
+
 class ProjectEstimatesView extends Component {
 
   constructor(props) {
@@ -17,7 +19,7 @@ class ProjectEstimatesView extends Component {
     this.setState({ isLoading: true });
     try {
       const options = { method: 'GET' };
-      const varURL = "http://83.229.71.39:9000/projectestimates?pnumber="+ pnumber +"&estimatetype=" + estimatetype;
+      const varURL = "http://" + URL + ":9000/projectestimates?pnumber="+ pnumber +"&estimatetype=" + estimatetype;
       const first = await fetch(varURL, options);
       const response = await first.json();
       if (estimatetype === 'Project Expenditure') {

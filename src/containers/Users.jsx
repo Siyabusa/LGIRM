@@ -3,7 +3,13 @@ import logo from '../images/find.png'
 import { Image } from 'react-bootstrap'
 import Loader from 'react-loader-spinner';
 import UserResults from '../components/UserResults'
+
+const URL = process.env.REACT_APP_URL;
+
+
 export default class Users extends Component{
+
+    
 
     constructor(props) {
         super(props);
@@ -20,7 +26,7 @@ export default class Users extends Component{
         this.setState({isLoading: true});
             if(sessionStorage.getItem("role") === "System Administrator"){
                 try{
-                    const first = await fetch('http://83.229.71.39:9000/users');
+                    const first = await fetch("http://" + URL + ":9000/users");
                     const response = await first.json();
                     console.log(response.recordset[0]);
                     this.setState({data: response.recordset, isLoading : false});

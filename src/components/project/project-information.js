@@ -1,14 +1,20 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import ContractorInput from './project-info/contractors';
-import TimeFrame from './project-info/time-frames';
-import Location from './project-info/location';
-import { multistepcontext } from '../../StepContext';
-const steps = ['Details', 'Location', 'Contractors', 'Time Frames'];
+import * as React from "react";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import ContractorInput from "./project-info/contractors";
+import TimeFrame from "./project-info/time-frames";
+import Location from "./project-info/location";
+import Details from "./project-info/details"
+import { multistepcontext } from "../../StepContext";
+const steps = [
+  "Infrastructure Details",
+  "Location",
+  "Contractors",
+  "Time Frames",
+];
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,7 +45,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -51,23 +57,30 @@ export default function BasicTabs(props) {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="project creation main tabs">
-          <Tab label="Location" {...a11yProps(0)} />
-          <Tab label="Contractor Information" {...a11yProps(1)} />
-          <Tab label="Time Frames" {...a11yProps(2)} />
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="project creation main tabs"
+        >
+          <Tab label="Infrastructure Details" {...a11yProps(0)} />
+          <Tab label="Location" {...a11yProps(1)} />
+          <Tab label="Contractor Information" {...a11yProps(2)} />
+          <Tab label="Time Frames" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-      <Location details={props}/>
-        
+        <Details/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ContractorInput/>
+        <Location details={props} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <TimeFrame/>
+        <ContractorInput />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <TimeFrame />
       </TabPanel>
     </Box>
   );

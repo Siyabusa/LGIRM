@@ -302,6 +302,9 @@ const Projectcost = () => {
                   <MenuItem value={10}>Emergency</MenuItem>
                   <MenuItem value={20}>Not Tabled</MenuItem>
                   <MenuItem value={30}>Tabled</MenuItem>
+                  <MenuItem value={40}>Pending</MenuItem>
+                  <MenuItem value={50}>Approved</MenuItem>
+                  <MenuItem value={60}>Rejected</MenuItem>
                 </Select>
               </FormControl>
             </div>

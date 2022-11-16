@@ -5,6 +5,8 @@ import logo from '../images/NT.png';
 import axios from "axios";
 import "./Login.css";
 
+const URL = process.env.REACT_APP_URL;
+
 export default class newUser extends Component {
   constructor(props) {
     super(props);
@@ -50,7 +52,7 @@ export default class newUser extends Component {
   fetchUser = async event => {
     const { username, password } = this.state;
     try {
-      const response = await axios.post("http://localhost:9000/login", JSON.stringify({
+      const response = await axios.post("http://" + URL + ":9000/login", JSON.stringify({
         UserName: username,
         Password: password
       }), {

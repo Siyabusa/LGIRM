@@ -49,29 +49,31 @@ export default function BasicTextFields() {
       Validate
       autoComplete="off"
     >
-      <TextField id="filled-basic" value={userData['Name']} onChange={(e) => setUserData({...userData, "Name" : e.target.value})} label="Name" variant="outlined" />
+      <TextField id="filled-basic" value={userData['Name']} onChange={(e) => setUserData({...userData, "Name" : e.target.value})} label="Asset No." variant="outlined" />
+      <TextField id="filled-basic" value={userData['Name']} onChange={(e) => setUserData({...userData, "Name" : e.target.value})} label="IDP Ref No." variant="outlined" />
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label-province">Province</InputLabel>
+        <InputLabel id="demo-simple-select-label-province">IDMS Gates</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={userData['Province']}
-          label="Province"
+          label="IDMS Gates"
           onChange={(e) => setUserData({...userData, "Province" : e.target.value})}
         >
-          <MenuItem value="Eastern Cape">Eastern Cape</MenuItem>
-          <MenuItem value="Eastern Cape">Free State</MenuItem>
-          <MenuItem value="Eastern Cape">Gauteng</MenuItem>
-          <MenuItem value="KwaZulu-Natal">KwaZulu-Natal</MenuItem>
-          <MenuItem value="Limpopo">Limpopo</MenuItem>
-          <MenuItem value="Mpumalanga">Mpumalanga</MenuItem>
-          <MenuItem value="Northern Cape">Northern Cape</MenuItem>
-          <MenuItem value="North West">North West</MenuItem>
-          <MenuItem value="Western Cape">Western Cape</MenuItem>
+          <MenuItem value="Western Cape">--select--</MenuItem>
+          <MenuItem value="Initiation pre Feasibility">Initiation pre Feasibility</MenuItem>
+          <MenuItem value="Concept Feasibility">Concept Feasibility</MenuItem>
+          <MenuItem value="Design Development">Design Development</MenuItem>
+          <MenuItem value="Design Documentation">Design Documentation</MenuItem>
+          <MenuItem value="Works">Works</MenuItem>
+          <MenuItem value="Handover">Handover</MenuItem>
+          <MenuItem value="Close Out">Close Out</MenuItem>
+          
+          
         </Select>
       </FormControl>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label-Function">Sector_Function</InputLabel>
+        <InputLabel id="demo-simple-select-label-Function">Sub Sector</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -79,55 +81,16 @@ export default function BasicTextFields() {
           label="Province"
           onChange={(e) => setUserData({...userData, "delivery" : e.target.value})}
         >
-          <MenuItem value="Standard Project">health</MenuItem>
-          <MenuItem value="Project Packaged with Sub Projects">Community & Social Services</MenuItem>
-          <MenuItem value="Project Packaged with Sub Contracts">Housing</MenuItem>
-          <MenuItem aria-controls={open_public ? 'Public-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open_public ? 'true' : undefined}
-                    onClick={handleClick_public}>Public Safety</MenuItem>
-                    <Menu
-                    id="Public-menu"
-                    anchorEl={anchorEl_public}
-                    open={open_public}
-                    onClose={handleClose}
-                    MenuListProps={{
-                      'aria-labelledby': 'basic-button',
-                    }}
-                  >
-                    <MenuItem value={1} onClick={handleClose}>Administration</MenuItem>
-                    <MenuItem value={2} onClick={handleClose}>Transport Infrastructure</MenuItem>
-                    <MenuItem value={3} onClick={handleClose}>Transport Operations</MenuItem>
-                    <MenuItem value={4} onClick={handleClose}>Transport Regulation</MenuItem>
-                    <MenuItem value={5} onClick={handleClose}>Community based Programmes</MenuItem>
-                  </Menu>
-          <MenuItem aria-controls={open_sport ? 'Sport-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open_sport ? 'true' : undefined}
-                    onClick={handleClick_sport}>Sports & Recreation</MenuItem>
-                    <Menu
-                    id="Sport-menu"
-                    anchorEl={anchorEl_sport}
-                    open={open_sport}
-                    onClose={handleClose}
-                    MenuListProps={{
-                      'aria-labelledby': 'basic-button',
-                    }}
-                  >
-                    <MenuItem value={1} onClick={handleClose}>Administration</MenuItem>
-                    <MenuItem value={2} onClick={handleClose}>Development Planning</MenuItem>
-                    <MenuItem value={3} onClick={handleClose}>Housing Development</MenuItem>
-                  </Menu>
-          <MenuItem value="Environmental Protection">Environmental Protection</MenuItem>
-          <MenuItem value="Waste Water Management">Waste Water Management</MenuItem>
-          <MenuItem value="Road Transport">Road Transport</MenuItem>
-          <MenuItem value="Water Management">Water Management</MenuItem>
-          <MenuItem value="Electricity">Electricity</MenuItem>
-          <MenuItem value="Other">Other</MenuItem>
+          <MenuItem value="public Toilets">public Toilets</MenuItem>
+          <MenuItem value="Sewerage">Sewerage</MenuItem>
+          <MenuItem value="Storm Water Management">Storm Water Management</MenuItem>
+          
+          <MenuItem value="Waste Water Treatment">Waste Water Treatment</MenuItem>
+          
         </Select>
       </FormControl>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label-delivery">Delivery Mechanism</InputLabel>
+        <InputLabel id="demo-simple-select-label-delivery">Project Sub Status</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -135,12 +98,27 @@ export default function BasicTextFields() {
           label="Province"
           onChange={(e) => setUserData({...userData, "delivery" : e.target.value})}
         >
-          <MenuItem value="Standard Project">Standard Project</MenuItem>
-          <MenuItem value="Project Packaged with Sub Projects">Project Packaged with Sub Projects</MenuItem>
-          <MenuItem value="Project Packaged with Sub Contracts">Project Packaged with Sub Contracts</MenuItem>
+          <MenuItem value="Standard Project">Proposed</MenuItem>
+          <MenuItem value="Project Packaged with Sub Projects">Active</MenuItem>
+          <MenuItem value="Project Packaged with Sub Contracts">Rejected</MenuItem>
         </Select>
       </FormControl>
-      <TextField id="standard-basic" value={userData['Manager']} onChange={(e) => setUserData({...userData, "Manager" : e.target.value})} label="Project Manager" variant="outlined" />
+      <TextField id="filled-basic" value={userData['Name']} onChange={(e) => setUserData({...userData, "Name" : e.target.value})} label="Scope of Work" variant="outlined" />
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label-delivery">Project Description</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={userData['delivery']}
+          label="Province"
+          onChange={(e) => setUserData({...userData, "delivery" : e.target.value})}
+        >
+          <MenuItem value="Standard Project">New</MenuItem>
+          <MenuItem value="Project Packaged with Sub Projects">Repairs & Maintenance</MenuItem>
+          <MenuItem value="Project Packaged with Sub Contracts">Refurbishments</MenuItem>
+          <MenuItem value="Project Packaged with Sub Contracts">Upgrades</MenuItem>
+        </Select>
+      </FormControl>
     </Box>
   );
 }

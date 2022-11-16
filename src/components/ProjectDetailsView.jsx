@@ -6,6 +6,8 @@ import ContractorDetails from '../components/ContractorDetails';
 import TimeFrameDetails from '../components/TimeFrameDetails';
 import { stepIconClasses } from '@mui/material';
 
+const URL = process.env.REACT_APP_URL;
+
 class ProjectDetailsView extends Component {
 
 
@@ -21,7 +23,7 @@ class ProjectDetailsView extends Component {
     async fetchLocation(pnumber) {
         try {
             const options = { method: 'GET' };
-            const first = await fetch("http://83.229.71.39:9000/locationbypnumber?pnumber=" + pnumber, options);
+            const first = await fetch("http://" + URL + ":9000/locationbypnumber?pnumber=" + pnumber, options);
             const response = await first.json();
             this.setState({ locationData: response[0] });
 
@@ -34,7 +36,7 @@ class ProjectDetailsView extends Component {
     async fetchContractor(pnumber) {
         try {
             const options = { method: 'GET' };
-            const first = await fetch("http://83.229.71.39:9000/contractorbypnumber?pnumber=" + pnumber, options);
+            const first = await fetch("http://" + URL + ":9000/contractorbypnumber?pnumber=" + pnumber, options);
             const response = await first.json();
             this.setState({ contractorData: response[0] });
         } catch (err) {

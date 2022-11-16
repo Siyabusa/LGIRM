@@ -12,7 +12,7 @@ export default class PersonalDetailsTab extends Component {
     }
 
     getValues = () => {
-        console.log("this is the value tested", this.props.details.details.selected.Number);
+        
         return(
                 <div className="persondetails">
                             <dl className="dl-horizontal">
@@ -22,14 +22,10 @@ export default class PersonalDetailsTab extends Component {
                                 <dt>Project Name</dt>
                                 <dd>{this.props.details.details.selected.Name}</dd>
 
-                                <dt>Project Type</dt>
-                                <dd>{this.props.details.details.selected.ProjectType}</dd>
 
                                 <dt>Province</dt>
                                 <dd>{this.props.details.details.selected.Province}</dd>
 
-                                <dt>Delivery Mechanism</dt>
-                                <dd>{this.props.details.details.selected.DeliveryMechanism}</dd>
 
                                 <dt>Project Manager</dt>
                                 <dd>{this.props.details.details.selected.ProjectLeader}</dd>

@@ -17,7 +17,7 @@ import "./locationFinder.css";
 import { multistepcontext } from '../../../StepContext';
 
 
-export default function Places() {
+export default function Places(props) {
 
   
 

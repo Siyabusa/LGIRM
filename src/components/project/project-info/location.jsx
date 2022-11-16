@@ -72,7 +72,7 @@ render() {
             />
           </FormGroup>
           <FormGroup controlId="municipality" bsSize="large">
-            <ControlLabel>Municipality</ControlLabel>
+            <ControlLabel>Local Municipality</ControlLabel>
             <FormControl
               value={this.state.municipality}
               onChange={this.handleChange}
@@ -84,10 +84,31 @@ render() {
             <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
                  onChange={this.onChangeList}>
                 <option value="None">--select--</option>
-                <option value="20">20</option>
-                <option value="22">22</option>
-                <option value="25">25</option>
-                <option value="60">60</option>
+                <option value="20">Ward 1</option>
+                <option value="22">Ward 2</option>
+                <option value="25">Ward 3</option>
+                <option value="60">Ward 4</option>
+                <option value="20">Ward 5</option>
+                <option value="22">Ward 6</option>
+                <option value="25">Ward 7</option>
+                <option value="60">Ward 8</option>
+                <option value="20">Ward 9</option>
+                <option value="22">Ward 10</option>
+                <option value="25">Ward 11</option>
+                <option value="60">Ward 12</option>
+                <option value="20">Ward 13</option>
+                <option value="22">Ward 14</option>
+                <option value="25">Ward 15</option>
+                <option value="60">Ward 16</option>
+                <option value="20">Ward 17</option>
+                <option value="22">Ward 18</option>
+                <option value="25">Ward 19</option>
+                <option value="60">Ward 20</option>
+                <option value="20">Ward 21</option>
+                <option value="22">Ward 22</option>
+                <option value="25">Ward 23</option>
+                <option value="60">Ward 24</option>
+                <option value="60">Ward 25</option>
                 
             </FormControl>
             </FormGroup>
@@ -96,10 +117,7 @@ render() {
             <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
                  onChange={this.onChangeList}>
                  <option value="None">--select--</option>
-                <option value="disctrict 2">disctrict 1</option>
-                <option value="disctrict 2">disctrict 2</option>
-                <option value="disctrict 3">disctrict 3</option>
-                <option value="disctrict 4">disctrict 4</option>
+                <option value="disctrict 2">Alfred Nzo District</option>
             </FormControl>
             </FormGroup>
           </form>

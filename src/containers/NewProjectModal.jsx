@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { FormGroup, FormControl, ControlLabel, Image } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import logo from '../images/NT.png';
-import axios from "axios";
 import "./Login.css";
 import { withRouter } from "react-router-dom";
 
@@ -16,7 +15,11 @@ class NewProjectModal extends Component {
         isAdmin : false,
         projectname: "",
         province: "", 
-        sector: "", 
+        sector: "",
+        metro:"", 
+        hasMetro: false,
+        district: "",
+        local: "",
         projectmanager: ""
 
     };
@@ -25,6 +28,21 @@ class NewProjectModal extends Component {
     this.setState({sector: this.inputRef.value});
   }
 
+  onChangeListProvince = (event) => {
+    this.setState({province: event.target.value});
+  }
+
+  onChangeListMetros = (event) => {
+    this.setState({metro: event.target.value});
+  }
+
+  onChangeListDistricts = (event) => {
+    this.setState({district: event.target.value});
+  }
+
+  onChangeListLocal = (event) => {
+    this.setState({local: event.target.value});
+  }
   validateForm() {
     return this.state.province.length > 0;
     
@@ -65,9 +83,236 @@ class NewProjectModal extends Component {
     this.setState({isLoading: false});
         //this.setState({province: sessionStorage.getItem("province")});
   }
+
+  hasMetroCheck(province){
+    if(province === 'KZN' || province === 'Free State' || province === 'Western Cape' || province === 'Eastern Cape' || province === 'Gauteng'){
+      return true;
+    }
+    return false;
+  }
+
+
+  getMetroValue(){
+    if(this.state.province ==='KZN'){
+      return this.kzn_metros();
+    }else if(this.state.province === 'Free State'){
+      return this.free_state_metros();
+    }else if(this.state.province === 'Western Cape'){
+      return this.western_cape_metros();
+    }else if(this.state.province === 'Eastern Cape'){
+      return this.eastern_cape_metros();
+    }else if(this.state.province === 'Gauteng'){
+      return this.gauteng_metros();
+    }else {
+      return '';
+    }
+  }
+
+  getLocalValue(){
+    if(this.state.district ==='Alfred Nzo'){
+      return this.alfred_local();
+    }else if(this.state.district === 'Amathole'){
+      return this.amathole_local();
+    }else if(this.state.district === 'Chris Hani'){
+      return this.chris_local();
+    }else if(this.state.district === 'Joe Gqabi'){
+      return this.joe_local();
+    }else if(this.state.district === 'OR Tambo'){
+      return this.OR_local();
+    }else if(this.state.district === 'Sarah Baartman'){
+      return this.sarah_local();
+    }
+    else {
+      return '';
+    }
+  }
+
+  
+
+  returnDistrict(){
+    const dis = this.eastern_cape_districts();
+    
+    return (<FormGroup controlId="district" bsSize="large">
+    <ControlLabel>District Municipality</ControlLabel>
+    {dis}
+  </FormGroup>);
+  }
+
+  
+
+  returnMetros(value){
+    const metro = this.getMetroValue();
+    
+    return (<FormGroup controlId="province" bsSize="large">
+    <ControlLabel>Metro Municipality</ControlLabel>
+    {metro}
+  </FormGroup>);
+  }
+
+  returnLocal(){
+    const loc = this.getLocalValue();
+    
+    return (<FormGroup controlId="local" bsSize="large">
+    <ControlLabel>Local Municipality</ControlLabel>
+    {loc}
+  </FormGroup>);
+  }
+
+  eastern_cape_districts(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListDistricts}>
+   <option value="None">--select--</option>
+   <option value="Alfred Nzo">Alfred Nzo District</option>
+   <option value="Amathole">Amathole District</option>
+   <option value="Chris Hani">Chris Hani District</option>
+   <option value="Joe Gqabi">Joe Gqabi District</option>
+   <option value="OR Tambo">OR Tambo District</option>
+   <option value="Sarah Baartman">Sarah Baartman District</option>
+   
+</FormControl>);
+  }
+
+/*Metros*/
+
+  kzn_metros(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListMetros}>
+   <option value="None">--select--</option>
+   <option value="Ethekweni">Ethekweni Metropolitan</option>
+   
+</FormControl>);
+  }
+
+  free_state_metros(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListMetros}>
+   <option value="None">--select--</option>
+   <option value="Mangaung">Mangaung Metropolitan</option>
+   
+</FormControl>);
+  }
+
+  western_cape_metros(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListMetros}>
+   <option value="None">--select--</option>
+   <option value="City of Cape town">City of Cape town Metropolitan</option>
+   
+</FormControl>);
+  }
+
+  eastern_cape_metros(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListMetros}>
+   <option value="None">--select--</option>
+   <option value="Buffalo City">Buffalo City Metropolitan</option>
+   <option value="Nelson Mandela Bay">Nelson Mandela Bay Metropolitan</option>
+   
+</FormControl>);
+  }
+
+  gauteng_metros(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListMetros}>
+   <option value="None">--select--</option>
+   <option value="City of Ekurhuleni">City of Ekurhuleni Metropolitan</option>
+   <option value="City of Johannesburg">City of Johannesburg Metropolitan</option>
+   <option value="City of Tshwane">City of Tshwane Metropolitan</option>
+   
+</FormControl>);
+  }
+
+
+  /*local*/
+
+  alfred_local(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListLocal}>
+   <option value="None">--select--</option>
+   <option value="Matatiele">Matatiele Local</option>
+   <option value="Ntabankulu">Ntabankulu Local</option>
+   <option value="Umzimvubu">Umzimvubu Local</option>
+   <option value="Winnie Madikizela-Mandela">Winnie Madikizela-Mandela Local</option>
+   
+</FormControl>);
+  }
+
+  amathole_local(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListLocal}>
+   <option value="None">--select--</option>
+   <option value="Amahlathi">Amahlathi Local</option>
+   <option value="Great Kei">Great Kei Local</option>
+   <option value="Mbhashe">Mbhashe Local</option>
+   <option value="Mnquma">Mnquma Local</option>
+   <option value="Ngqushwa">Ngqushwa Local</option>
+   <option value="Raymond Mhlaba">Raymond Mhlaba Local</option>
+   
+</FormControl>);
+  }
+
+  chris_local(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListLocal}>
+   <option value="None">--select--</option>
+   <option value="Emalahleni">Emalahleni Local</option>
+   <option value="Engcobo">Engcobo Local</option>
+   <option value="Enoch Mgijima">Enoch Mgijima Local</option>
+   <option value="Intsika Yethu">Intsika Yethu Local</option>
+   <option value="Inxuba Yethemba">Inxuba Yethemba Local</option>
+   <option value="Sakhisizwe">Sakhisizwe Local</option>
+   
+</FormControl>);
+  }
+
+  joe_local(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListLocal}>
+   <option value="None">--select--</option>
+   <option value="Elundini">Elundini Local</option>
+   <option value="Sengu">Sengu Local</option>
+   <option value="Walter Sisulu">Walter Sisulu Local</option>
+   
+</FormControl>);
+  }
+
+  OR_local(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListLocal}>
+   <option value="None">--select--</option>
+   <option value="Ingquza Hill">Ingquza Hill Local</option>
+   <option value="King Sabata Dalidyebo">King Sabata Dalidyebo Local</option>
+   <option value="Mhlontlo">Mhlontlo Local</option>
+   <option value="Nyandeni">Nyandeni Local</option>
+   <option value="Port St Johns">Port St Johns Local</option>
+   
+</FormControl>);
+  }
+
+  sarah_local(){
+    return( <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+    onChange={this.onChangeListLocal}>
+   <option value="None">--select--</option>
+   <option value="Blue Crane Route">Blue Crane Route Local</option>
+   <option value="Dr Beyers Naude">Dr Beyers Naude Local</option>
+   <option value="Kouga">Kouga Local</option>
+   <option value="Koukamma">Koukamma Local</option>
+   <option value="Makana">Makana Local</option>
+   <option value="Ndlambe">Ndlambe Local</option>
+   <option value="Sundays River Valley">Sundays River Valley Local</option>
+   
+</FormControl>);
+  }
+
   
 
   render() {
+
+    const disMetro = this.hasMetroCheck(this.state.province) ? this.returnMetros() : '';
+    const disDistrict = this.state.metro === 'Nelson Mandela Bay'? this.returnDistrict() : '';
+    const munic = this.state.district.length > 0 ? this.getLocalValue() : '';
+
+    console.log(this.state.metro);
     return (
       <div className="Login">
           <Image className="center" src={logo} responsive />
@@ -83,12 +328,23 @@ class NewProjectModal extends Component {
           </FormGroup>
           <FormGroup controlId="province" bsSize="large">
             <ControlLabel>Province</ControlLabel>
-            <FormControl
-              value={this.state.province}
-              onChange={this.handleChange}
-              type="province"
-            />
+            <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}
+                 onChange={this.onChangeListProvince}>
+                <option value="None">--select--</option>
+                <option value="Limpopo">Limpopo</option>
+                <option value="KZN">Kwazulu-Natal</option>
+                <option value="Free State">Free State</option>
+                <option value="Western Cape">Western Cape</option>
+                <option value="Eastern Cape">Eastern Cape</option>
+                <option value="Gauteng">Gauteng</option>
+                <option value="Mpumalanga">Mpumalanga</option>
+                <option value="Northen Cape">Northen Cape</option>
+                <option value="North West">North West</option>
+            </FormControl>
           </FormGroup>
+          {disMetro}
+          {disDistrict}
+          {munic}
           <FormGroup controlId="formControlsSelect2" bsSize="large">
             <ControlLabel>Sector</ControlLabel>
             <FormControl componentClass="select" placeholder="All" inputRef={(ref) => {this.inputRef = ref}}

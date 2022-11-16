@@ -18,7 +18,7 @@ class ProjectCostView extends Component{
     this.setState({isLoading: true});
     try {
       const options = { method: 'GET' };
-      const first = await fetch("http://83.229.71.39:9000/projectcost?pnumber=" + pnumber, options);
+      const first = await fetch("http://localhost:9000/projectcost?pnumber=" + pnumber, options);
       const response = await first.json();
       this.setState({costdata:response, isLoading: false});
 
@@ -33,7 +33,7 @@ class ProjectCostView extends Component{
     this.setState({isLoading: true});
     try {
       const options = { method: 'GET' };
-      const first = await fetch("http://83.229.71.39:9000/projectbudget?pnumber=" + pnumber, options);
+      const first = await fetch("http://localhost:9000/projectbudget?pnumber=" + pnumber, options);
       const response = await first.json();
       this.setState({budgetdata:response, isLoading: false});
     } catch (err) {
