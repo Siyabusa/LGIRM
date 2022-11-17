@@ -4,6 +4,36 @@ import ProjectResults from "./ProjectResults";
 import { Button, Panel, Modal } from "react-bootstrap";
 import NewProjectModal from "../containers/NewProjectModal";
 
+const EC_Nelson_Mandela_district = [
+  {
+    name: "Alfred Ndzo District Municipality",
+  },
+  {
+    name: "Amathole District Municipality",
+  },
+  {
+    name: "Chris Hani District Municipality",
+  },
+  {
+    name: "Joe Gqabi District Municipality",
+  },
+  {
+    name: "OR Tambo District Municipality",
+  },
+  {
+    name: "Sarah Baartman District Municipality",
+  },
+];
+
+const EC_Buffalo_city_district = [
+  {
+    name: "Buffalo City Metropolitan",
+  },
+  {
+    name: "Nelson Mandela Metropolitan",
+  },
+];
+
 class ProjectResultsComponent extends Component {
   constructor(props, context) {
     super(props, context);
@@ -46,8 +76,7 @@ class ProjectResultsComponent extends Component {
           <Modal.Body>
             <NewProjectModal />
           </Modal.Body>
-          <Modal.Footer>
-          </Modal.Footer>
+          <Modal.Footer></Modal.Footer>
         </Modal>
         <br />
         <Panel id="collapsible-panel-example-2">
@@ -56,11 +85,44 @@ class ProjectResultsComponent extends Component {
           </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body>
-              <ProjectResults
-                value={this.props.value}
-                province="Eastern Cape"
-              />
-              Ï
+              <Panel id="collapsible-panel-example-2">
+                <Panel.Heading>
+                  <Panel.Title toggle>Buffalo City Metropolitan</Panel.Title>
+                </Panel.Heading>
+                <Panel.Collapse>
+                  <Panel.Body>
+                    <ProjectResults
+                      value={this.props.value}
+                      province="Eastern Cape"
+                    />
+                  </Panel.Body>
+                </Panel.Collapse>
+              </Panel>
+              <Panel id="collapsible-panel-example-2">
+                <Panel.Heading>
+                  <Panel.Title toggle>Nelson Mandela Metropolitan</Panel.Title>
+                </Panel.Heading>
+                <Panel.Collapse>
+                  <Panel.Body>
+                    {EC_Nelson_Mandela_district.map(({ name }) => (
+                      <Panel id="collapsible-panel-example-2">
+                        <Panel.Heading>
+                          <Panel.Title toggle>{name}</Panel.Title>
+                        </Panel.Heading>
+                        <Panel.Collapse>
+                          <Panel.Body>
+                            <ProjectResults
+                              value={this.props.value}
+                              province="Eastern Cape"
+                              municipality={name}
+                            />
+                          </Panel.Body>
+                        </Panel.Collapse>
+                      </Panel>
+                    ))}
+                  </Panel.Body>
+                </Panel.Collapse>
+              </Panel>
             </Panel.Body>
           </Panel.Collapse>
         </Panel>
@@ -74,7 +136,6 @@ class ProjectResultsComponent extends Component {
                 value={this.props.value}
                 province="Kwa-Zulu Natal"
               />
-              Ï
             </Panel.Body>
           </Panel.Collapse>
         </Panel>
@@ -128,7 +189,6 @@ class ProjectResultsComponent extends Component {
                 value={this.props.value}
                 province="Northern Cape"
               />
-              Ï
             </Panel.Body>
           </Panel.Collapse>
         </Panel>
@@ -152,7 +212,6 @@ class ProjectResultsComponent extends Component {
                 value={this.props.value}
                 province="  Western Cape"
               />
-              Ï
             </Panel.Body>
           </Panel.Collapse>
         </Panel>

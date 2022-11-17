@@ -53,10 +53,11 @@ class ProjectResults extends Component {
       position: toast.POSITION.BOTTOM_CENTER,
     });
 
-    getData(province){
+    getData(province, municipality){
       var temp = [];
       var mydata = this.props.value.map(item =>{
-        if(item.Province === province){
+        console.log(item);
+        if(item.Province === province && item.Municipality === municipality){
           temp.push(item);
         }
       });
@@ -65,7 +66,7 @@ class ProjectResults extends Component {
 
   componentDidMount = async () => {
     this.setState({isLoading: true});
-    this.getData(this.props.province);
+    this.getData(this.props.province, this.props.municipality);
     this.setState({
       role: sessionStorage.getItem("role"),
       isLoading: false
