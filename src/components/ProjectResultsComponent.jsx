@@ -132,10 +132,20 @@ class ProjectResultsComponent extends Component {
           </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body>
-              <ProjectResults
-                value={this.props.value}
-                province="Kwa-Zulu Natal"
-              />
+              <Panel id="collapsible-panel-example-2">
+                <Panel.Heading>
+                  <Panel.Title toggle>eThekwini Metropolitan Municipality</Panel.Title>
+                </Panel.Heading>
+                <Panel.Collapse>
+                  <Panel.Body>
+                    <ProjectResults
+                      value={this.props.value}
+                      province="Kwa-Zulu Natal"
+                      municipality="eThekwini Metropolitan Municipality"
+                    />
+                  </Panel.Body>
+                </Panel.Collapse>
+              </Panel>
             </Panel.Body>
           </Panel.Collapse>
         </Panel>

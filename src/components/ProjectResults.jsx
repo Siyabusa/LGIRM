@@ -4,10 +4,10 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import { Button, ButtonToolbar, Panel } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
 import "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css";
-import ToolkitProvider, {
-  CSVExport,
-  Search,
-} from "react-bootstrap-table2-toolkit";
+import {
+  Search
+} from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
+import ToolkitProvider , { CSVExport } from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min";
 import { Routes, Route, useNavigate, withRouter } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 
@@ -56,7 +56,6 @@ class ProjectResults extends Component {
     getData(province, municipality){
       var temp = [];
       var mydata = this.props.value.map(item =>{
-        console.log(item);
         if(item.Province === province && item.Municipality === municipality){
           temp.push(item);
         }
@@ -107,11 +106,6 @@ class ProjectResults extends Component {
         text: "Province",
         sort: true,
         hidden : true,
-      },
-      {
-        dataField: "Department",
-        text: "Department",
-        sort: true,
       },
       {
         dataField: "Sector",

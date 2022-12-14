@@ -3,15 +3,11 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Home";
 import NotFound from "./containers/NotFound";
 import Login from "./containers/Login";
-import MainSearch from "./containers/MainSearch";
-import ViewBilling from "./containers/ViewBilling";
 import Dashboard from './containers/Dashboard';
 import Projects from "./containers/Projects";
 import NewUser from "./containers/NewUser";
 import Users from "./containers/Users";
 import NewProject from "./containers/Newproject";
-import MainSearchResults from "./containers/PatientSearchResults";
-import MainTab from "./components/TabView";
 import AppliedRoute from "./components/AppliedRoute";
 import ProjectView from "./components/ProjectView";
 

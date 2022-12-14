@@ -6,3 +6,11 @@
 .span-row-2{grid-row: span 2 / auto;}
 
 .span-row-4{grid-row: span 6 / auto;}
+
+
+
+.span-row-3 .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+}

@@ -9,6 +9,9 @@ import TimeFrame from "./project-info/time-frames";
 import Location from "./project-info/location";
 import Details from "./project-info/details"
 import { multistepcontext } from "../../StepContext";
+import Projectcost from './project-fin/project-cost';
+import Projectestimates from './project-fin/cost-estimates';
+import Cashflow from './project-fin/cash-flow-in-year';
 const steps = [
   "Infrastructure Details",
   "Location",
@@ -68,6 +71,9 @@ export default function BasicTabs(props) {
           <Tab label="Location" {...a11yProps(1)} />
           <Tab label="Contractor Information" {...a11yProps(2)} />
           <Tab label="Time Frames" {...a11yProps(3)} />
+          <Tab label="Project Cost" {...a11yProps(4)} />
+          <Tab label="Project Estimates" {...a11yProps(5)} />
+          <Tab label="CashFlow" {...a11yProps(6)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -81,6 +87,16 @@ export default function BasicTabs(props) {
       </TabPanel>
       <TabPanel value={value} index={3}>
         <TimeFrame />
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+      <Projectcost/>
+        
+      </TabPanel>
+      <TabPanel value={value} index={5}>
+        <Projectestimates/>
+      </TabPanel>
+      <TabPanel value={value} index={6}>
+        <Cashflow/>
       </TabPanel>
     </Box>
   );

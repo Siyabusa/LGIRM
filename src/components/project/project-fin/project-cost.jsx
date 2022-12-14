@@ -107,7 +107,6 @@ const Projectcost = () => {
               <br />
               <h6>Variation Orders :</h6>
               <br />
-              <h6>Total :</h6>
             </div>
             <div>
               <TextField
@@ -129,16 +128,23 @@ const Projectcost = () => {
                 type="number"
                 label="R"
                 variant="standard"
-              /> <br />
+              /> 
+               <TextField
+                id="standard-basic"
+                type="file"
+                label="R"
+                variant="standard"
+              /><br />
               <TextField
                 id="standard-basic"
                 type="number"
-                label="R"
+                label="Total"
                 variant="standard"
               /> <br />
             </div>
           </div>
         </Paper>
+        <Button variant="contained">Save</Button>
       </div>
 
       <div>

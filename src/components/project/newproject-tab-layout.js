@@ -1,12 +1,12 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import HorizontalNonLinearStepper from './project-information';
-import HorizontalNonLinearStepperFinancial from './financial-information';
-import StepContext from '../../StepContext';
+import * as React from "react";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import HorizontalNonLinearStepper from "./project-information";
+import HorizontalNonLinearStepperFinancial from "./financial-information";
+import StepContext from "../../StepContext";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -37,7 +37,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -49,21 +49,20 @@ export default function BasicTabs(props) {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="project creation main tabs">
-          <Tab label="Project Information" {...a11yProps(0)} />
-          <Tab label="Financial Information" {...a11yProps(1)} />
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="project creation main tabs"
+        >
+          <Tab label="New Project" {...a11yProps(0)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
         <StepContext>
-        <HorizontalNonLinearStepper details={props}/>
+          <HorizontalNonLinearStepper details={props} />
         </StepContext>
-        
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <HorizontalNonLinearStepperFinancial/>
       </TabPanel>
     </Box>
   );

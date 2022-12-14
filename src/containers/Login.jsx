@@ -56,7 +56,7 @@ export default class Login extends Component {
               this.setState({isAdmin: true,data: response.data[0], isLoading: false})
           }
           this.props.history.push({
-            pathname: '/',
+            pathname: '/projects',
             state: { 
               isAdmin : this.state.isAdmin,
               Role : response.data[0].userRole,

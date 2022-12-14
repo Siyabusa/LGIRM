@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useContext } from "react";
 import TextField from '@mui/material/TextField';
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap,InfoWindow, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -12,13 +12,17 @@ import {
   ComboboxList,
   ComboboxOption,
 } from "@reach/combobox";
+import Geocode from "react-geocode";
 import "@reach/combobox/styles.css";
 import "./locationFinder.css";
 import { multistepcontext } from '../../../StepContext';
 
 
 export default function Places(props) {
-
+  Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
+  Geocode.setLanguage("en");
+  Geocode.setLocationType("ROOFTOP");
+  Geocode.enableDebug();
   
 
   const { isLoaded } = useLoadScript({
@@ -28,13 +32,50 @@ export default function Places(props) {
   });
 
   if (!isLoaded) return <div>Loading...</div>;
-  return <Map />;
+  return <Map lat={props.lat} longi = {props.longi}/>;
 }
 
-function Map() {
+function Map(props) {
+
+  const flat = props.lat;
+  const flongi = props.longi;
+
+  const markers = [
+    {
+      id: 1,
+      lat: props.lat,
+      lng: props.longi
+    },
+  ];
+
   const { locationData, setLocationData } = useContext(multistepcontext);
   const center = useMemo(() => ({ lat: -26.2041028, lng: 28.0473051 }), []);
   const [selected, setSelected] = useState(null);
+  const [selectedAddress, setSelectedAddress] = useState("");
+  const [activeMarker, setActiveMarker] = useState(null);
+
+
+  const handleActiveMarker = (marker, lat, lng) => {
+    if (marker === activeMarker) {
+      return;
+    }
+
+    Geocode.fromLatLng(markers[0].lat, markers[0].lng).then(
+      (response) => {
+        const address = response.results[0].formatted_address;
+        console.log("The ADDRESS: " + address);
+        setSelectedAddress(address);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    setActiveMarker(marker);
+  };
+
+ 
+
+  
 
   
 
@@ -47,11 +88,29 @@ function Map() {
       </div>
 
       <GoogleMap
-        zoom={10}
-        center={center}
+        zoom={12}
+        center={{lat:parseFloat(flat), lng:parseFloat(flongi) }}
+        defaultCenter={{ lat: -26.2041028, lng: 28.0473051 }}
         mapContainerClassName="map-container"
       >
-        {selected && <Marker position={selected} />}
+         {markers.map(({ id, lat, lng }) => (
+          <Marker
+            key={id}
+            position={{ lat: parseFloat(flat), lng: parseFloat(flongi) }}
+            onClick={() => handleActiveMarker(id, lat, lng)}
+          >
+            {activeMarker === id ? (
+              <InfoWindow
+                position={{ lat: parseFloat(flat), lng: parseFloat(flongi) }}
+                onCloseClick={() => setActiveMarker(null)}
+              >
+                <div>
+                  <h3>{selectedAddress}</h3>
+                </div>
+              </InfoWindow>
+            ) : null}
+          </Marker>
+        ))}
       </GoogleMap>
     </>
   );

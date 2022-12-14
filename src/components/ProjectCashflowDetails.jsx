@@ -79,9 +79,9 @@ export default class ProjectEstimatesDetails extends Component {
 
           
 
-          const ppe = this.props.data.length === 0 ? this.defaultValue() :this.estimates(columns, this.state.data);
-          const cpe = this.props.data.length === 0 ? this.defaultValue() :this.estimates(columns, this.state.data2);
-          const pe = this.props.data.length === 0 ? this.defaultValue() :this.estimates(columns, this.state.data3);
+          const ppe = this.estimates(columns, this.state.data);
+          const cpe = this.estimates(columns, this.state.data2);
+          const pe = this.estimates(columns, this.state.data3);
 
 
         return (
